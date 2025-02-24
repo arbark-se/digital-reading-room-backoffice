@@ -16,7 +16,7 @@ export const routes = (router: KoaRouter) => {
 
     const name = ctx.request.body.name
     const levelIdsString = ctx.request.body.levelIds
-    const imports = await createImport(name, levelIdsString.split(','))
+    const imports = await createImport(name, levelIdsString.split(';'))
 
     ctx.body = imports
   })

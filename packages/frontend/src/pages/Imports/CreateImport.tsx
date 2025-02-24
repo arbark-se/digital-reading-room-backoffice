@@ -84,8 +84,11 @@ export const CreateImport = () => {
             redan finns kommer få sina dokument uppdaterade med metadata från
             Comprima (OCR-text kommer inte att ändras).
             <br />
+            ARAB format: entries are separated by semicolon. Each entry consists of a level id (number) and the name of the level, separated by a comma. 
+            <br />
+            Please avoid commas and & in level names for the time being.
           </p>
-          <p>Exempel: 221, 21443, 51135</p>
+          <p>Example: 123,This is an example;456, Here is another one</p>
         </Grid>
         <Grid item md={12} xs={12}>
           {error && <Alert severity="error">{error}</Alert>}

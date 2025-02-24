@@ -92,7 +92,8 @@ const updateUser = async (user: User) => {
       }
     }
 
-    try {
+   /* XXX: remove dependency to reading room frontend
+   try {
       axios(
         `${config.readingRoom.url}/api/auth/send-reset-password-link?new=true&referer=${config.readingRoom.url}/login`,
         {
@@ -104,7 +105,7 @@ const updateUser = async (user: User) => {
       )
     } catch (error) {
       throw new Error('Could not send invitation/password select email')
-    }
+    }*/
   }
 
   return id

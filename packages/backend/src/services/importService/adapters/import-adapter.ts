@@ -41,8 +41,16 @@ export const getImports = async () => {
 
 export const createImport = async (name: string, levelIds: string[]) => {
   for (const levelId of levelIds) {
+    let splits = levelId.split(",");
+    let level = splits[0];
+    let levelName = "obekant nivånamn";
+    if (splits.length > 1) {
+      levelName = splits[1].trim();
+    }
+
     await db('levels').insert({
-      level: levelId,
+      level: level,
+      level_name: levelName,
       depositor: name,
       archivist: name,
     })

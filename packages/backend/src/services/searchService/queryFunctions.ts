@@ -117,7 +117,7 @@ const createSearchQuery = (
         searchQuery.bool.must.push({
           wildcard,
         })
-      } else if (filterTerm[0] === 'seriesName') {
+      } else if (filterTerm[0] === 'seriesNameXXX') {
         const terms: { [k: string]: string[] } = {}
         terms[`${getFullFieldName(filterTerm[0])}`] = filterTerm[1]
           .split('%%')
@@ -154,7 +154,7 @@ export const setValues = async (
 
   fieldFilterConfigs.forEach((fieldFilterConfig) => {
     switch (fieldFilterConfig.fieldName) {
-      case 'seriesName':
+      case 'seriesNameXXX':
         aggs[fieldFilterConfig.fieldName] = {
           multi_terms: {
             terms: [
@@ -207,7 +207,7 @@ export const setValues = async (
         fieldFilterConfig[valueField] = aggregation.buckets
           .filter((bucket: any) => {
             if (
-              fieldFilterConfig.fieldName === 'seriesName' &&
+              fieldFilterConfig.fieldName === 'seriesNameXXX' &&
               bucket.key.length > 1 &&
               bucket.key[1] === ''
             )
@@ -216,7 +216,7 @@ export const setValues = async (
           })
           .map((bucket: any) => {
             switch (fieldFilterConfig.fieldName) {
-              case 'seriesName':
+              case 'seriesNameXXX':
                 return bucket.key
                   .filter((k: string) => k && k != '')
                   .join(' - ')
